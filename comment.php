@@ -28,6 +28,7 @@ if(!empty($_POST['note']) && !empty($_POST['id']) && !empty($_POST['note'])){
   <?php 
     die();
   endif;
+  if(!is_numeric($note) || !is_numeric($id)){die('Erreur de données !');}
   // Si l'utilisateur est reconnu on poste l'évaluation
   $retour = postComment($pdo, $id, $utilisateurExistant['id_utilisateur'], $comment, $note);
   if($retour > 0){ ?>
