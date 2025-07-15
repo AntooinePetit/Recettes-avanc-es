@@ -1,4 +1,5 @@
-.table_component {
+.table_component,
+section {
   margin: auto;
   overflow: auto;
   max-width: 1440px;
@@ -52,15 +53,22 @@ a {
   text-decoration: none;
 }
 
-form{
+form {
   display: grid;
   gap: 10px;
 
   max-width: 500px;
   margin: auto;
 
-  div{
+  div {
     display: flex;
     flex-direction: column;
+  }
+}
+
+section{
+  div{
+    display: flex;
+    gap: 25px;
   }
 }
