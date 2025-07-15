@@ -15,7 +15,6 @@ require_once('functions.php');
     $recette = getRecipe($pdo, $id);
     $tags = getTags($pdo, $id);
     $ingredients = getIngredients($pdo, $id);
-    var_dump($ingredients);
   ?>
   
   <section>
@@ -40,6 +39,21 @@ require_once('functions.php');
     </div>
     <h2>Étapes de préparation :</h2>
     <p><?= $recette['instructions'] ?></p>
+  </section>
+
+  <section>
+    <h2>Commentaires</h2>
+    <?php 
+    $evaluations = getComments($pdo, $id);
+    ?>
+    <div>
+        <?php foreach($evaluations as $evaluation): ?>
+          <article>
+            <h3><?= $evaluation['nom_utilisateur'] ?> - <?= $evaluation['note'] ?>/5 - <?= $evaluation['date_evaluation'] ?></h3>
+            <p><?= $evaluation['commentaire'] ?></p>
+          </artc>
+        <?php endforeach; ?>
+    </div>
   </section>
 </body>
 </html>

@@ -1,5 +1,5 @@
 .table_component,
-section {
+section:nth-child(1) {
   margin: auto;
   overflow: auto;
   max-width: 1440px;

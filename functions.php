@@ -51,3 +51,10 @@ function getIngredients($pdo, $id){
   $stmt->execute(["id" => $id]);
   return $stmt->fetchAll();
 }
+
+// Fonction pour récupérer les évaluations d'une recette
+function getComments($pdo, $id){
+  $stmt = $pdo->prepare('SELECT e.commentaire, e.note, e.date_evaluation, u.nom_utilisateur FROM evaluations as e INNER JOIN utilisateurs_recettes as u ON e.fk_id_utilisateur = u.id_utilisateur WHERE e.fk_id_recette = :id');
+  $stmt->execute(['id' => $id]);
+  return $stmt->fetchAll();
+}
