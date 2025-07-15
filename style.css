@@ -1,5 +1,5 @@
 .table_component,
-section:nth-child(1) {
+section {
   margin: auto;
   overflow: auto;
   max-width: 1440px;
@@ -66,9 +66,28 @@ form {
   }
 }
 
-section{
-  div{
+section:nth-child(1) {
+  div {
     display: flex;
     gap: 25px;
+  }
+}
+
+#error-user {
+  display: flex;
+  gap: 60px;
+  form {
+    width: fit-content;
+    margin: 0;
+  }
+  input[type="submit"]:nth-child(5) {
+    border: none;
+    background: none;
+    color: blue;
+    width: fit-content;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

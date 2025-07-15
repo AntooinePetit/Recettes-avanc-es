@@ -51,9 +51,37 @@ require_once('functions.php');
           <article>
             <h3><?= $evaluation['nom_utilisateur'] ?> - <?= $evaluation['note'] ?>/5 - <?= $evaluation['date_evaluation'] ?></h3>
             <p><?= $evaluation['commentaire'] ?></p>
-          </artc>
+          </article>
         <?php endforeach; ?>
     </div>
+
+    <h3>Ajouter un commentaire :</h3>
+    <form action="comment.php" method="post">
+      <div>
+        <label for="utilisateur">Nom d'utilisateur</label>
+        <input type="text" name="utilisateur" id="utilisateur">
+      </div>
+
+      <div>
+        <label for="note">Note :</label>
+        <select name="note" id="note">
+          <?php 
+          $note = 1;
+          for($i = 1; $i <= 5; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+          <?php endfor;?>
+        </select>
+      </div>
+
+      <div>
+        <label for="commentaire">Commentaire :</label>
+        <textarea name="commentaire" id="commentaire"></textarea>
+      </div>
+
+      <input type="number" name="id" id="id" value="<?= $id ?>" hidden>
+
+      <input type="submit" value="Poster le commentaire">
+    </form>
   </section>
 </body>
 </html>

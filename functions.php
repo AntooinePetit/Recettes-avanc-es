@@ -58,3 +58,22 @@ function getComments($pdo, $id){
   $stmt->execute(['id' => $id]);
   return $stmt->fetchAll();
 }
+
+// Fonction pour vérifier l'existence d'un utilisateur
+function checkUser($pdo, $user){
+  $stmt = $pdo->prepare('SELECT * FROM utilisateurs_recettes WHERE nom_utilisateur = :user');
+  $stmt->execute(["user" => $user]);
+  return $stmt->fetch();
+}
+
+// Fonction pour poster une évaluation
+function postComment($pdo, $recipeId, $userId, $comment, $grade){
+  $stmt = $pdo->prepare('INSERT INTO evaluations (note, commentaire, fk_id_recette, fk_id_utilisateur) VALUES (:note, :commentaire, :id_recette, :id_user)');
+  $stmt->execute([
+    "note" => $grade,
+    "commentaire" => $comment,
+    "id_recette" => $recipeId,
+    "id_user" => $userId
+  ]);
+  return $stmt->rowCount();
+}
