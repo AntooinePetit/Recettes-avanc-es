@@ -77,3 +77,13 @@ function postComment($pdo, $recipeId, $userId, $comment, $grade){
   ]);
   return $stmt->rowCount();
 }
+
+// Fonction pour inscrire un membre
+function signUp($pdo, $username, $email){
+  $stmt = $pdo->prepare('INSERT INTO utilisateurs_recettes (nom_utilisateur, email) VALUES (:username, :email)');
+  $stmt->execute([
+    'username' => $username,
+    'email' => $email
+  ]);
+  return $stmt->rowCount();
+}
